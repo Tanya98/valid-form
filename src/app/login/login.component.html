@@ -1,0 +1,29 @@
+<div class="form" [formGroup]="usersList">
+
+  <ul class="tab-group">
+    <li class="tab active"><a routerLink="">Sign Up</a></li>
+    <li class="tab"><a routerLink="login">Log In</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="login">
+      <h1>Welcome Back!</h1>
+
+      <form ngNoForm>
+        <div class="field-wrap">
+          <input formControlName="email" value="{{email}}" placeholder="Email Address"/>
+          <span class="error" *ngIf="usersList.controls['email'].invalid && usersList.controls['email'].dirty">{{usersList.controls['email'].errors.message}}</span>
+        </div>
+
+        <div class="field-wrap">
+          <input formControlName="password" value="{{password}}" type="password" placeholder="Password"/>
+          <span class="error" *ngIf="usersList.controls['password'].invalid && usersList.controls['password'].dirty">{{usersList.controls['password'].errors.message}}</span>
+        </div>
+
+        <p class="forgot"><a routerLink="">Forgot Password?</a></p>
+
+        <button class="button button-block" (click)="getStarted()">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 <div class="form" [formGroup]="usersList">
 
   <ul class="tab-group">
-    <li class="tab active"><a routerLink=''>Sign Up</a></li>
-    <li class="tab"><a routerLink='login'>Log In</a></li>
+    <li class="tab active"><button routerLink=''>Sign Up</button></li>
+    <li class="tab"><button routerLink='login' [disabled]="usersList.invalid">Log In</button></li>
   </ul>
 
   <div class="tab-content">
@@ -12,24 +12,29 @@
         <div class="top-row">
           <div class="field-wrap">
             <input formControlName="firstName" placeholder="First Name" />
-            <span class="error" *ngIf="usersList.controls['firstName'].invalid">{{usersList.controls['firstName'].errors.message}}</span>
+            <span class="error"
+              *ngIf="usersList.controls['firstName'].invalid">{{usersList.controls['firstName'].errors.message}}</span>
           </div>
           <div class="field-wrap">
             <input formControlName="lastName" placeholder="Last Name" />
-            <span class="error" *ngIf="usersList.controls['lastName'].invalid">{{usersList.controls['lastName'].errors.message}}</span>
+            <span class="error"
+              *ngIf="usersList.controls['lastName'].invalid">{{usersList.controls['lastName'].errors.message}}</span>
           </div>
         </div>
 
         <div class="field-wrap">
           <input formControlName="email" placeholder="Email Address" />
-          <span class="error" *ngIf="usersList.controls['email'].invalid && usersList.controls['email'].dirty">{{usersList.controls['email'].errors.message}}</span>
+          <span class="error"
+            *ngIf="usersList.controls['email'].invalid && usersList.controls['email'].dirty">{{usersList.controls['email'].errors.message}}</span>
         </div>
 
         <div class="field-wrap">
           <input formControlName="password" type="password" placeholder="Set a password" />
-          <span class="error" *ngIf="usersList.controls['password'].invalid && usersList.controls['password'].dirty">{{usersList.controls['password'].errors.message}}</span>
+          <span class="error"
+            *ngIf="usersList.controls['password'].invalid && usersList.controls['password'].dirty">{{usersList.controls['password'].errors.message}}</span>
         </div>
-        <button type="submit" class="button button-block" (click)="addData(usersList.value)">Get Started</button>
+        <button type="submit" class="button button-block" (click)="addData(usersList.value)"
+          [class.but-disabled]="usersList.invalid" [disabled]="usersList.invalid">Get Started</button>
       </form>
     </div>
   </div>
